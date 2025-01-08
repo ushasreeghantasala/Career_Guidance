@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommended Jobs</title>
+    <link rel="stylesheet" href="results1.css"> <!-- Link to external stylesheet -->
+</head>
+<body>
+    <h1>Recommended Jobs</h1>
+    <div id="job-container" class="job-container"></div>
+    <a href="index.html" class="back-button">Back to Home</a>
+
+    <script>
+        // Extract job recommendations from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const jobs = urlParams.get('job');
+
+        // Job dataset (name and shared image URL)
+        const jobData = {
+            "Actor": "https://img.freepik.com/premium-vector/beautiful-professional-actress-acting-set-vector-cartoon_61103-1468.jpg?w=360",
+            "Animator": "https://www.moople.in/blog/wp-content/uploads/2024/09/animation-training-23-09-2024.jpg",
+            "Architect": "https://www.shutterstock.com/image-vector/vector-illustration-experienced-architect-validates-260nw-272228576.jpg",
+            "Author": "https://st2.depositphotos.com/1832477/9967/v/450/depositphotos_99678346-stock-illustration-hipster-man-in-a-jeans.jpg",
+            "Composer": "https://png.pngtree.com/png-clipart/20230913/original/pngtree-composer-clipart-character-cartoon-standing-by-a-small-music-stand-filled-png-image_11078908.png",
+            "Conductor": "https://www.shutterstock.com/image-vector/orchestra-conductor-wearing-tailcoat-waving-260nw-1689560653.jpg",
+            "Corporate Trainer": "https://img.freepik.com/premium-photo/corporate-training-session-cartoon-people-smart-attire-engaged-whiteboard-presentation_1029473-419155.jpg",
+            "Counselor": "https://www.shutterstock.com/image-vector/illustration-stickman-kid-boy-student-600nw-1293615868.jpg",
+            "Dancer": "https://thumbs.dreamstime.com/b/little-girl-blue-dress-plat-dancing-ballet-classic-dance-class-future-professional-ballerina-dancer-small-happy-kid-86115076.jpg",
+            "Data Scientist": "https://img.freepik.com/premium-photo/3d-flat-cartoon-data-scientist-analyzing-big-data-digital-transformation-data-scientist-wor_980716-174028.jpg",
+            "Editor": "https://png.pngtree.com/png-vector/20240708/ourmid/pngtree-a-video-editor-editing-on-computer-cartoon-art-png-image_12947454.png",
+            "Economist": "https://thumbs.dreamstime.com/b/cheerful-d-character-representing-economist-analyzing-financial-data-surrounded-coins-graphs-illustration-344227793.jpg",
+            "Environmental Scientist": "https://thumbs.dreamstime.com/b/environmental-scientist-work-d-colorful-illustration-generative-ai-environmental-scientist-work-d-colorful-299959489.jpg",
+            "Event Planner": "https://static.vecteezy.com/system/resources/previews/026/994/668/non_2x/event-management-wedding-planner-professional-organizer-manager-planning-event-conference-or-party-schedule-modern-flat-cartoon-style-illustration-on-white-background-vector.jpg",
+            "Financial Analyst": "https://img.freepik.com/premium-photo/financial-analyst-cartoon-character-design_989064-22837.jpg",
+            "Graphic Designer": "https://as2.ftcdn.net/jpg/05/79/61/93/1000_F_579619353_rrKr5uIKHZ8U5E5GjLyZxmzkxrlzEQrj.jpg",
+            "HR Manager": "https://c8.alamy.com/comp/2BNC574/cute-cartoon-character-hr-manager-and-empty-boss-chair-employment-vacancy-and-hiring-job-vector-concept-illustration-of-manager-hr-headhunting-to-vacant-place-2BNC574.jpg",
+            "Industrial Designer": "https://img.freepik.com/free-photo/industrial-designer-digital-art_23-2151585302.jpg",
+            "Journalist": "https://img.freepik.com/free-vector/hand-drawn-journalist-day-background-with-journalists-work_23-2149479754.jpg",
+            "Lawyer": "https://i.pinimg.com/736x/4e/17/3b/4e173bc5a9337d1dab1a332ec23f3de5.jpg",
+            "Life Coach": "https://static.vecteezy.com/system/resources/previews/040/161/445/non_2x/life-coach-illustration-for-consultation-education-motivation-mentoring-perspective-and-self-coaching-in-business-flat-cartoon-background-vector.jpg",
+            "Marine Biologist": "https://png.pngtree.com/png-clipart/20230914/original/pngtree-marine-biologist-vector-png-image_11243710.png",
+            "Motivational Speaker": "https://thumbs.dreamstime.com/b/motivational-speech-concept-design-business-seminar-speaker-presentation-microphone-meeting-professional-talk-training-63508517.jpg",
+            "Music Producer": "https://thumbs.dreamstime.com/b/music-recording-studio-21108145.jpg",
+            "Music Teacher": "https://media.istockphoto.com/id/1286091223/vector/music-class-learning-young-students-listen-teacher-man-with-guitar-teaches-children-in.jpg?s=612x612&w=0&k=20&c=BuIkeQsYhTgkvyLF2K2B6dL3objQg7uY0olwDsfzHAs=",
+            "Philosopher": "https://img.freepik.com/premium-vector/free-vector-professor-multi-layered-illustration-icon_990473-141.jpg",
+            "Physiotherapist": "https://media.istockphoto.com/id/1402522606/vector/young-woman-in-medical-rehabilitation-physical-therapy-girl-in-recovery-do-exercises-with.jpg?s=612x612&w=0&k=20&c=KDSLlouWfq7skxvX7WioXdi6O9gNE8_uQImi5nRHHaA=",
+            "Professional Athlete": "https://img.freepik.com/premium-vector/professional-athlete-cartoon-vector-illustration-sports-enthusiasts_1151483-62237.jpg",
+            "Professor": "https://img.freepik.com/premium-vector/professional-cartoon-professor-teaching-classroom-setting_1339083-5858.jpg",
+            "Psychologist": "https://media.istockphoto.com/id/1221253470/vector/psychologist-in-a-therapy-session-with-brain-character-cartoon-illustration.jpg?s=612x612&w=0&k=20&c=9RAGvwWRG775HN0zqFqP75hGPMntrwkU3xOismZDB5Q=",
+            "Public Speaker": "https://thumbs.dreamstime.com/z/woman-speaker-podium-addressing-audience-conference-hall-professional-presentation-business-woman-speaker-podium-addressing-329022193.jpg",
+            "Researcher": "https://png.pngtree.com/png-clipart/20220424/original/pngtree-science-researching-lab-professional-scientists-chemical-researchers-cartoon-working-with-equipment-png-image_7553012.png",
+            "Social Worker": "https://img.freepik.com/premium-vector/social-worker-profession_180868-66.jpg",
+            "Software Engineer": "https://img.freepik.com/premium-vector/software-developer-vector-illustration-communication-technology-cyber-security_1249867-5477.jpg",
+            "Sound Engineer": "https://c8.alamy.com/comp/P7GWHR/sound-engineer-man-vector-audio-recording-process-recording-news-film-cinematography-isolated-cartoon-illustration-P7GWHR.jpg",
+            "Sociologist": "https://nortonbooks.typepad.com/.a/6a00d83534ac5b69e2010536ec1c7d970c-pi",
+            "Surgeon": "https://img.freepik.com/free-vector/hand-drawn-surgeon-cartoon-illustration_52683-148520.jpg?semt=ais_hybrid",
+            "Teacher": "https://img.freepik.com/premium-photo/3d-render-cartoon-teacher-standing-near-blackboard-with-white-background_994418-25183.jpg",
+            "Theologian": "https://www.shutterstock.com/image-vector/digital-illustration-catholic-priest-holding-600nw-2316110419.jpg",
+            "UX/UI Designer": "https://animationcoursesahmedabad.com/images/course/image/1665641094.jpg",
+            "Wildlife Biologist": "https://jobyamedia.blob.core.windows.net/images/role_articles/small/a2g5m8cx_networking_for_biologists_510x295.jpg",
+            "Writer": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH9je90IdR0PP84RfOkg7vbV4-ulpix5x36g&s",
+            "Urban Planner": "https://i.ytimg.com/vi/Sq5VGiWXGTY/maxresdefault.jpg",
+            "Conservationist": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ6koAEiXCYeXNUHfZcTMZTRsXn0fl_uj5SQ&s"
+        };
+
+        const jobContainer = document.getElementById('job-container');
+
+        if (jobs) {
+            // Parse jobs list
+            const parsedJobs = JSON.parse(jobs.replace(/'/g, '"')); // Replace single quotes with double quotes
+
+            parsedJobs.forEach(job => {
+                // Create a card for each job
+                const jobCard = document.createElement('div');
+                jobCard.classList.add('job-card');
+
+                // Add image and title
+                jobCard.innerHTML = `
+                    <img src="${jobData[job]}" alt="${job}" class="job-image">
+                    <h2 class="job-title">${job}</h2>
+                `;
+                jobContainer.appendChild(jobCard);
+            });
+        } else {
+            const noJobsMessage = document.createElement('div');
+            noJobsMessage.classList.add('no-jobs');
+            noJobsMessage.textContent = "No recommendations available.";
+            jobContainer.appendChild(noJobsMessage);
+        }
+    </script>
+</body>
+</html>

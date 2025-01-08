@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Questionnaire</title>
+    <link rel="stylesheet" href="questionniare.css">
+</head>
+<body>
+    <header>
+        <h1>Get to know Yourself !!</h1>
+        <p>Answer the 36 questions below to learn more about yourself.</p>
+    </header>
+    
+    <div class="progress-container">
+        <div class="progress-bar"></div>
+        <p class="progress-text">0/36 Questions Answered</p>
+    </div>
+    
+    <!-- Start of Form -->
+    <form id="questionnaireForm" action="save_responses.php" method="POST">
+        <main id="questionnaire"></main>
+        
+        <footer>
+            <button type="submit" id="submit-btn">Submit Your Responses!</button>
+        </footer>
+    </form>
+    <!-- End of Form -->
+    
+    <div class="back-button-container">
+        <a href="index.html" class="back-button">Back to Home</a>
+    </div>
+
+    <script src="questionniare.js"></script>
+</body>
+</html>
+
+
+

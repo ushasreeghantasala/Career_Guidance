@@ -1,0 +1,114 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f9f9fb;
+    color: #333;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #4caf50, #2e7d32);
+    color: white;
+}
+
+/* Progress Tracker */
+.progress-container {
+    width: 80%;
+    margin: 20px auto;
+    position: relative;
+}
+.progress-bar {
+    height: 10px;
+    width: 0;
+    background-color: #4caf50;
+    transition: width 0.3s ease;
+}
+.progress-text {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Questions Section */
+#questionnaire {
+    width: 80%;
+    margin: 0 auto;
+}
+.question-container {
+    background: white;
+    margin: 15px 0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.question-container p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.options .option {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.options .option.selected {
+    background-color: #4caf50;
+    color: white;
+    font-weight: bold;
+}
+
+/* Back Button Styling */
+.back-button-container {
+    margin: 20px;
+    text-align: center;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #45a049;
+}
+
+.questionnaire-container {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.question {
+    margin-bottom: 15px;
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    margin: 20px 0;
+}
+#submit-btn {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#submit-btn:hover {
+    background-color: #2e7d32;
+}

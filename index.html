@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webpage with Navigation</title>
+    <link rel="stylesheet" href="http://localhost/Mini%20Project%201/style.css"> <!-- Link to external CSS -->
+    <script src="script.js" defer></script> <!-- Link to external JS -->
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li id="homeLink"><a href="#" onclick="showSection('home')">Home</a></li>
+                <li><a href="#" onclick="showSection('about')">About Us</a></li>
+                <li><a href="#" onclick="showSection('contact')">Contact Us</a></li>
+                <li><a href="#" onclick="showSection('signup')">Sign Up</a></li>
+                <li><a href="#" onclick="showSection('signin')">Sign In</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sections -->
+    <section id="home" class="content">
+        <h1>Welcome to Our Website</h1>
+        <p>Your one-stop solution for everything!</p>
+        <button id="takeTest" onclick="navigateToQuestionnaire()">Take Test</button>
+    </section>
+
+    <section id="about" class="content">
+        <h2>About Us</h2>
+        <p>We are a team of dedicated professionals providing quality services to our users.</p>
+    </section>
+
+    <section id="contact" class="content">
+        <h2>Contact Us</h2>
+        <!-- Google Maps Embed -->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3811.045235590466!2d81.52318207492608!3d16.53301448898657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a370b1a8d5a9cdb%3A0x6a431028e7e01da!2sShri%20Vishnu%20Engineering%20College%20For%20Women!5e0!3m2!1sen!2sin!4v1697282923763!5m2!1sen!2sin " width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </section>
+
+    <section id="signup" class="content">
+        <h2>Sign Up</h2>
+        <form id="signupForm" action="signup.php" method="POST">
+            <label for="name">Enter Name:</label><br>
+            <input type="text" id="name" name="name" required><br>
+            <label for="contact">Enter Contact No:</label><br>
+            <input type="tel" id="contact" name="contact" required><br>
+            <label for="email">Enter Email ID:</label><br>
+            <input type="email" id="email" name="email" required><br>
+            <label for="dob">Enter Date of Birth:</label><br>
+            <input type="date" id="dob" name="dob" required><br>
+            <label for="gender">Select Gender:</label><br>
+            <select id="gender" name="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select><br>
+            <label for="password">Enter Password:</label><br>
+            <input type="password" id="password" name="password" required><br>
+            <label for="confirm-password">Confirm Password:</label><br>
+            <input type="password" id="confirm-password" name="confirm_password" required><br>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <section id="signin" class="content">
+        <h2>Sign In</h2>
+        <form id="signinForm" action="signin.php" method="POST">
+            <label for="signin-email">Enter Email ID:</label><br>
+            <input type="email" id="signin-email" name="signin_email" required><br>
+            <label for="signin-password">Enter Password:</label><br>
+            <input type="password" id="signin-password" name="signin_password" required><br>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Your Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>
